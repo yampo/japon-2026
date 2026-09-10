@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Tres formas de recorrerlo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<style>
+:root{
+  --paper:#F2F4F7; --surface:#FFFFFF; --sunken:#E7EAF0;
+  --ink:#141922; --ink-2:#414A59; --ink-3:#6C7587;
+  --rule:#D4D9E2; --rule-soft:#E3E6ED;
+  --indigo:#2B4A7D; --indigo-soft:#E4EAF3;
+  --ocre:#8F5D12; --ocre-soft:#F3EADA;
+  --laca:#94302A; --laca-soft:#F5E2E0;
+  --verde:#3F6146;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#111419; --surface:#191D25; --sunken:#0C0F13;
+    --ink:#ECEFF4; --ink-2:#B3BBC9; --ink-3:#828B9C;
+    --rule:#2B313B; --rule-soft:#222831;
+    --indigo:#93B0DD; --indigo-soft:#1C2634;
+    --ocre:#D6A257; --ocre-soft:#2A2318;
+    --laca:#E08C84; --laca-soft:#2E1D1B;
+    --verde:#7FA687;
+  }
+  :root:not([data-theme="light"]) .bloque,
+  :root:not([data-theme="light"]) .pip{background:var(--cd)}
+}
+:root[data-theme="dark"]{
+  --paper:#111419; --surface:#191D25; --sunken:#0C0F13;
+  --ink:#ECEFF4; --ink-2:#B3BBC9; --ink-3:#828B9C;
+  --rule:#2B313B; --rule-soft:#222831;
+  --indigo:#93B0DD; --indigo-soft:#1C2634;
+  --ocre:#D6A257; --ocre-soft:#2A2318;
+  --laca:#E08C84; --laca-soft:#2E1D1B;
+  --verde:#7FA687;
+}
+:root[data-theme="dark"] .bloque,
+:root[data-theme="dark"] .pip{background:var(--cd)}
+
+*{box-sizing:border-box}
+body{background:var(--paper); color:var(--ink); font-family:var(--sans);
+  font-size:16.5px; line-height:1.62; -webkit-font-smoothing:antialiased}
+.wrap{max-width:44rem; margin:0 auto; padding-inline:22px; padding-block:0 72px}
+
+h1,h2,h3{font-family:var(--serif); font-weight:600; text-wrap:balance; margin:0}
+h1{font-size:clamp(2.1rem,7vw,3.1rem); line-height:1.08; letter-spacing:-.015em}
+h2{font-size:clamp(1.35rem,4vw,1.7rem); line-height:1.2; letter-spacing:-.01em}
+h3{font-size:.78rem; font-family:var(--mono); font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3)}
+p{margin:0}
+strong{font-weight:600; color:var(--ink)}
+a{color:var(--indigo)}
+:focus-visible{outline:2px solid var(--indigo); outline-offset:3px; border-radius:2px}
+.eyebrow{font-family:var(--mono); font-size:.7rem; font-weight:500; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3)}
+
+.idiomas{display:flex; font-family:var(--mono); font-size:.73rem; letter-spacing:.06em;
+  text-transform:uppercase; border:1px solid var(--rule); border-radius:3px;
+  overflow:hidden; width:max-content}
+.idiomas a,.idiomas span{padding:5px 11px; text-decoration:none; color:var(--ink-3); background:var(--surface)}
+.idiomas span{background:var(--indigo); color:#fff; font-weight:500}
+.idiomas a:hover{color:var(--ink); background:var(--sunken)}
+
+header{padding-block:clamp(46px,9vw,86px) clamp(26px,4.5vw,40px);
+  display:flex; flex-direction:column; gap:18px}
+.kicker{display:flex; flex-wrap:wrap; gap:8px 16px; align-items:baseline}
+.ventana{font-family:var(--mono); font-size:.95rem; color:var(--ink-2); font-variant-numeric:tabular-nums}
+.bajada{font-size:1.12rem; color:var(--ink-2); max-width:34rem}
+.nota-plan{background:var(--ocre-soft); border-left:3px solid var(--ocre);
+  padding:15px 17px; font-size:.97rem; color:var(--ink-2)}
+
+.opcion{padding-block:clamp(30px,5.5vw,46px); border-top:1px solid var(--rule);
+  display:flex; flex-direction:column; gap:20px}
+.ohead{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:start}
+.oid{font-family:var(--serif); font-size:2.5rem; font-weight:600; line-height:.9;
+  color:var(--ink-3); font-variant-numeric:tabular-nums}
+.otit{display:flex; flex-direction:column; gap:7px; min-width:0}
+.otesis{color:var(--ink-2); font-size:1.02rem}
+
+.cinta{display:flex; gap:2px; height:60px}
+.bloque{background:var(--c); color:#fff; border-radius:2px; min-width:0;
+  padding:8px 9px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden}
+.bn{font-family:var(--serif); font-size:.83rem; font-weight:600; line-height:1.1;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.bd{font-family:var(--mono); font-size:.7rem; opacity:.85; font-variant-numeric:tabular-nums}
+
+.ometa{display:flex; flex-wrap:wrap; gap:10px 30px; padding-block:2px}
+.ometa > div{display:flex; flex-direction:column; gap:1px}
+.ml{font-family:var(--mono); font-size:.68rem; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3)}
+.mv{font-size:.97rem; color:var(--ink); font-variant-numeric:tabular-nums}
+
+.etapas{display:flex; flex-direction:column}
+.etapa{display:grid; grid-template-columns:auto 1fr; gap:3px 14px;
+  padding-block:13px; border-top:1px solid var(--rule-soft)}
+.etapa:first-child{border-top:0}
+.pip{width:9px; height:9px; border-radius:50%; background:var(--c); margin-top:8px; grid-row:span 2}
+.ecab{display:flex; flex-wrap:wrap; align-items:baseline; gap:3px 11px}
+.ec{font-family:var(--serif); font-size:1.05rem; font-weight:600}
+.er{font-family:var(--mono); font-size:.78rem; color:var(--ink-2); font-variant-numeric:tabular-nums}
+.en{font-family:var(--mono); font-size:.72rem; color:var(--ink-3); font-variant-numeric:tabular-nums; margin-left:auto}
+.enota{color:var(--ink-2); font-size:.95rem}
+
+.balance{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule-soft);
+  border:1px solid var(--rule-soft)}
+.bcol{background:var(--surface); padding:15px 16px; display:flex; flex-direction:column; gap:10px}
+.bcol ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px}
+.bcol li{display:grid; grid-template-columns:auto 1fr; gap:9px; font-size:.92rem; color:var(--ink-2)}
+.bcol li::before{font-family:var(--mono); font-size:.8rem; padding-top:1px}
+.gana li::before{content:"+"; color:var(--verde)}
+.pierde li::before{content:"−"; color:var(--laca)}
+
+section.cierre{padding-block:clamp(30px,5.5vw,46px); border-top:1px solid var(--rule);
+  display:flex; flex-direction:column; gap:18px}
+.sec-head{display:flex; flex-direction:column; gap:9px}
+ul.lista{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+ul.lista li{display:grid; grid-template-columns:auto 1fr; gap:11px; color:var(--ink-2); font-size:.97rem}
+ul.lista li::before{content:"—"; color:var(--ink-3); font-family:var(--mono); font-size:.85rem; padding-top:1px}
+
+.cta{display:inline-flex; align-items:center; gap:9px; align-self:flex-start;
+  font-family:var(--mono); font-size:.8rem; letter-spacing:.04em; text-decoration:none;
+  color:var(--indigo); border:1px solid var(--rule); border-radius:3px;
+  padding:9px 14px; background:var(--surface)}
+.cta:hover{background:var(--sunken)}
+
+footer{padding-block:32px 0; border-top:1px solid var(--rule); font-size:.83rem;
+  color:var(--ink-3); display:flex; flex-direction:column; gap:9px}
+
+@media (max-width:600px){
+  .balance{grid-template-columns:1fr}
+  .cinta{flex-direction:column; height:auto; gap:3px}
+  .bloque{flex:none !important; flex-direction:row; align-items:baseline; gap:10px; padding:8px 11px}
+  .bd{margin-left:auto}
+  .ohead{grid-template-columns:1fr; gap:6px}
+  .oid{font-size:1.6rem}
+  .en{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="idiomas"><span>Español</span><a href="itinerarios-pt.html">Português</a></div>
+  <div class="kicker">
+    <span class="eyebrow">Opciones de itinerario</span>
+    <span class="ventana">Japón · 14 dic 2026 – 7 ene 2027 · 25 días</span>
+  </div>
+  <h1>Tres formas de recorrerlo</h1>
+  <p class="bajada">Las tres respetan las mismas restricciones duras y usan los mismos días mínimos por ciudad. Lo que cambia entre ellas es una sola decisión: dónde pasar los seis días de shōgatsu. Todo lo demás se acomoda alrededor de eso.</p>
+  <div class="nota-plan">No son un plan cerrado: son tres argumentos para discutir. El itinerario de verdad se arma después de que ustedes marquen qué lugares les interesan, porque eso es lo único que estas tres opciones no pueden saber.</div>
+</header>
+
+<section class="opcion">
+  <div class="ohead">
+    <span class="oid">A</span>
+    <div class="otit">
+      <h2>Shōgatsu en Kioto</h2>
+      <p class="otesis">El fin de año adentro de la tradición viva: Okera-mairi la noche del 31, las campanadas de medianoche y el hatsumōde de Higashiyama.</p>
+    </div>
+  </div>
+
+  <div class="cinta"><div class="bloque" style="flex:5; --c:#2B4A7D; --cd:#3A5F9B"><span class="bn">Tokio</span><span class="bd">5</span></div><div class="bloque" style="flex:3; --c:#3F5C6B; --cd:#557888"><span class="bn">Kanazawa</span><span class="bd">3</span></div><div class="bloque" style="flex:3; --c:#94302A; --cd:#B4443C"><span class="bn">Osaka</span><span class="bd">3</span></div><div class="bloque" style="flex:8; --c:#5B4A7A; --cd:#7160A0"><span class="bn">Kioto</span><span class="bd">8</span></div><div class="bloque" style="flex:2; --c:#5E7793; --cd:#7B96B4"><span class="bn">Kawaguchiko</span><span class="bd">2</span></div><div class="bloque" style="flex:2; --c:#8F5D12; --cd:#A97418"><span class="bn">Hakone</span><span class="bd">2</span></div><div class="bloque" style="flex:2; --c:#2B4A7D; --cd:#3A5F9B"><span class="bn">Tokio</span><span class="bd">2</span></div></div>
+
+  <div class="ometa">
+    <div><span class="ml">Fin de año en</span><span class="mv">Kioto, los seis días</span></div>
+    <div><span class="ml">Mudanzas</span><span class="mv">6</span></div>
+  </div>
+
+  <div class="etapas"><div class="etapa"><div class="pip" style="--c:#2B4A7D; --cd:#3A5F9B"></div><div class="ecab"><span class="ec">Tokio</span><span class="er">14 dic – 18 dic</span><span class="en">5 días</span></div><div class="enota">Llegada y la ciudad a pleno. Boro-ichi de Setagaya el 15 y 16, hagoita-ichi de Asakusa del 17 al 19.</div></div><div class="etapa"><div class="pip" style="--c:#3F5C6B; --cd:#557888"></div><div class="ecab"><span class="ec">Kanazawa</span><span class="er">19 dic – 21 dic</span><span class="en">3 días</span></div><div class="enota">El kōbako-gani en Ōmichō, ocho días antes de la veda. Kenroku-en con el yukitsuri puesto y sin nadie.</div></div><div class="etapa"><div class="pip" style="--c:#94302A; --cd:#B4443C"></div><div class="ecab"><span class="ec">Osaka</span><span class="er">22 dic – 24 dic</span><span class="en">3 días</span></div><div class="enota">Midosuji encendida, Hikari no Renaissance hasta el 25, el castillo todavía abierto y Kuromon a pleno.</div></div><div class="etapa"><div class="pip" style="--c:#5B4A7A; --cd:#7160A0"></div><div class="ecab"><span class="ec">Kioto</span><span class="er">25 dic – 1 ene</span><span class="en">8 días</span></div><div class="enota">Ocho días de base. El tren de Sagano antes de que cierre el 29, shimai-Tenjin el 25, y el fin de año entero adentro.</div></div><div class="etapa"><div class="pip" style="--c:#5E7793; --cd:#7B96B4"></div><div class="ecab"><span class="ec">Kawaguchiko</span><span class="er">2 ene – 3 ene</span><span class="en">2 días</span></div><div class="enota">El Fuji con el aire de enero, que es cuando se ve. Se pierde el primer amanecer del año por un día.</div></div><div class="etapa"><div class="pip" style="--c:#8F5D12; --cd:#A97418"></div><div class="ecab"><span class="ec">Hakone</span><span class="er">4 ene – 5 ene</span><span class="en">2 días</span></div><div class="enota">Onsen y el circuito del lago con el Ekiden ya pasado y la ruta despejada.</div></div><div class="etapa"><div class="pip" style="--c:#2B4A7D; --cd:#3A5F9B"></div><div class="ecab"><span class="ec">Tokio</span><span class="er">6 ene – 7 ene</span><span class="en">2 días</span></div><div class="enota">Dos días de cierre con la ciudad ya reabierta.</div></div></div>
+
+  <div class="balance">
+    <div class="bcol gana">
+      <h3>Qué gana</h3>
+      <ul><li><span>La mejor secuencia de tradición viva que ofrece Japón, y solo existe entre el 31/12 y el 3/1.</span></li><li><span>Los templos no cierran en shōgatsu: se llenan. Los seis días difíciles caen en la única ciudad donde eso juega a favor.</span></li><li><span>Kanazawa con ocho días de margen sobre la veda del kōbako-gani, y Osaka entera antes de que shōgatsu la apague.</span></li></ul>
+    </div>
+    <div class="bcol pierde">
+      <h3>Qué pierde</h3>
+      <ul><li><span>El primer amanecer del año con el Fuji: llegan a Kawaguchiko el 2, un día tarde.</span></li><li><span>El On-Matsuri de Nara del 17 de diciembre — están en Tokio. Nara queda como excursión desde Kioto.</span></li><li><span>Hay que pelear cada reserva de restaurante del 29/12 al 3/1: es el costo de pasar shōgatsu en una ciudad.</span></li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="opcion">
+  <div class="ohead">
+    <span class="oid">B</span>
+    <div class="otit">
+      <h2>Shōgatsu en un ryokan</h2>
+      <p class="otesis">El fin de año donde la comida está resuelta por definición, y el primer amanecer del año frente al Fuji.</p>
+    </div>
+  </div>
+
+  <div class="cinta"><div class="bloque" style="flex:5; --c:#2B4A7D; --cd:#3A5F9B"><span class="bn">Tokio</span><span class="bd">5</span></div><div class="bloque" style="flex:3; --c:#3F5C6B; --cd:#557888"><span class="bn">Kanazawa</span><span class="bd">3</span></div><div class="bloque" style="flex:2; --c:#94302A; --cd:#B4443C"><span class="bn">Osaka</span><span class="bd">2</span></div><div class="bloque" style="flex:5; --c:#5B4A7A; --cd:#7160A0"><span class="bn">Kioto</span><span class="bd">5</span></div><div class="bloque" style="flex:2; --c:#8F5D12; --cd:#A97418"><span class="bn">Hakone</span><span class="bd">2</span></div><div class="bloque" style="flex:3; --c:#5E7793; --cd:#7B96B4"><span class="bn">Kawaguchiko</span><span class="bd">3</span></div><div class="bloque" style="flex:5; --c:#2B4A7D; --cd:#3A5F9B"><span class="bn">Tokio</span><span class="bd">5</span></div></div>
+
+  <div class="ometa">
+    <div><span class="ml">Fin de año en</span><span class="mv">Ryokan en Hakone y Kawaguchiko</span></div>
+    <div><span class="ml">Mudanzas</span><span class="mv">6</span></div>
+  </div>
+
+  <div class="etapas"><div class="etapa"><div class="pip" style="--c:#2B4A7D; --cd:#3A5F9B"></div><div class="ecab"><span class="ec">Tokio</span><span class="er">14 dic – 18 dic</span><span class="en">5 días</span></div><div class="enota">Llegada, los dos mercados de fin de año y la ciudad funcionando.</div></div><div class="etapa"><div class="pip" style="--c:#3F5C6B; --cd:#557888"></div><div class="ecab"><span class="ec">Kanazawa</span><span class="er">19 dic – 21 dic</span><span class="en">3 días</span></div><div class="enota">El kōbako-gani con margen. Kenroku-en en temporada baja.</div></div><div class="etapa"><div class="pip" style="--c:#94302A; --cd:#B4443C"></div><div class="ecab"><span class="ec">Osaka</span><span class="er">22 dic – 23 dic</span><span class="en">2 días</span></div><div class="enota">Fugu y Kuromon, con las iluminaciones todavía encendidas.</div></div><div class="etapa"><div class="pip" style="--c:#5B4A7A; --cd:#7160A0"></div><div class="ecab"><span class="ec">Kioto</span><span class="er">24 dic – 28 dic</span><span class="en">5 días</span></div><div class="enota">Cinco días con Nara adentro, y el tren de Sagano antes del cierre del 29.</div></div><div class="etapa"><div class="pip" style="--c:#8F5D12; --cd:#A97418"></div><div class="ecab"><span class="ec">Hakone</span><span class="er">29 dic – 30 dic</span><span class="en">2 días</span></div><div class="enota">Ryokan con kaiseki los dos días en que el país empieza a cerrar. El Ekiden todavía no existe.</div></div><div class="etapa"><div class="pip" style="--c:#5E7793; --cd:#7B96B4"></div><div class="ecab"><span class="ec">Kawaguchiko</span><span class="er">31 dic – 2 ene</span><span class="en">3 días</span></div><div class="enota">Nochevieja y el hatsuhinode: el primer sol del año sale 6:53 sobre el Fuji, que en enero es cuando se ve.</div></div><div class="etapa"><div class="pip" style="--c:#2B4A7D; --cd:#3A5F9B"></div><div class="ecab"><span class="ec">Tokio</span><span class="er">3 ene – 7 ene</span><span class="en">5 días</span></div><div class="enota">Cinco días finales con todo reabriendo, y la primera subasta de atún el 5.</div></div></div>
+
+  <div class="balance">
+    <div class="bcol gana">
+      <h3>Qué gana</h3>
+      <ul><li><span>Resuelve el problema gastronómico de shōgatsu por definición: se come adentro del ryokan, con kaiseki.</span></li><li><span>El primer amanecer del año con el Fuji, que es el único día del calendario en que ese lugar es irrepetible.</span></li><li><span>Los cinco días finales en Tokio con la ciudad ya reabierta: se llega a la primera subasta de atún del 5 de enero.</span></li></ul>
+    </div>
+    <div class="bcol pierde">
+      <h3>Qué pierde</h3>
+      <ul><li><span>Okera-mairi, las campanadas de Chion-in y el hatsumōde de Kioto: el fin de año se pasa en la montaña, no en el templo.</span></li><li><span>Osaka queda en dos días, que es el piso justo para una ciudad que es sobre todo cenas.</span></li><li><span>Es la opción que más depende de reservar YA: los ryokan de esas fechas abrieron reservas en junio.</span></li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="opcion">
+  <div class="ohead">
+    <span class="oid">C</span>
+    <div class="otit">
+      <h2>Tres bases</h2>
+      <p class="otesis">Menos mudanzas y más fondo. Cada cambio de ciudad cuesta media jornada; esta opción compra cuatro días de viaje pagando con Kanazawa.</p>
+    </div>
+  </div>
+
+  <div class="cinta"><div class="bloque" style="flex:8; --c:#2B4A7D; --cd:#3A5F9B"><span class="bn">Tokio</span><span class="bd">8</span></div><div class="bloque" style="flex:2; --c:#8F5D12; --cd:#A97418"><span class="bn">Hakone</span><span class="bd">2</span></div><div class="bloque" style="flex:2; --c:#5E7793; --cd:#7B96B4"><span class="bn">Kawaguchiko</span><span class="bd">2</span></div><div class="bloque" style="flex:9; --c:#5B4A7A; --cd:#7160A0"><span class="bn">Kioto</span><span class="bd">9</span></div><div class="bloque" style="flex:4; --c:#2B4A7D; --cd:#3A5F9B"><span class="bn">Tokio</span><span class="bd">4</span></div></div>
+
+  <div class="ometa">
+    <div><span class="ml">Fin de año en</span><span class="mv">Kioto, los seis días</span></div>
+    <div><span class="ml">Mudanzas</span><span class="mv">4</span></div>
+  </div>
+
+  <div class="etapas"><div class="etapa"><div class="pip" style="--c:#2B4A7D; --cd:#3A5F9B"></div><div class="ecab"><span class="ec">Tokio</span><span class="er">14 dic – 21 dic</span><span class="en">8 días</span></div><div class="enota">Ocho días: la ciudad entera sin apuro, más Kamakura, Kawagoe y Nikko como excursiones. Los dos mercados de fin de año adentro.</div></div><div class="etapa"><div class="pip" style="--c:#8F5D12; --cd:#A97418"></div><div class="ecab"><span class="ec">Hakone</span><span class="er">22 dic – 23 dic</span><span class="en">2 días</span></div><div class="enota">Una noche de ryokan y el circuito del lago con el Fuji del aire seco de diciembre.</div></div><div class="etapa"><div class="pip" style="--c:#5E7793; --cd:#7B96B4"></div><div class="ecab"><span class="ec">Kawaguchiko</span><span class="er">24 dic – 25 dic</span><span class="en">2 días</span></div><div class="enota">El atardecer y el amanecer siguiente, que son los dos momentos en que la montaña está limpia.</div></div><div class="etapa"><div class="pip" style="--c:#5B4A7A; --cd:#7160A0"></div><div class="ecab"><span class="ec">Kioto</span><span class="er">26 dic – 3 ene</span><span class="en">9 días</span></div><div class="enota">Nueve días de base única: Nara, Uji, Osaka y Himeji salen de acá sin cambiar de hotel, y el fin de año entero adentro.</div></div><div class="etapa"><div class="pip" style="--c:#2B4A7D; --cd:#3A5F9B"></div><div class="ecab"><span class="ec">Tokio</span><span class="er">4 ene – 7 ene</span><span class="en">4 días</span></div><div class="enota">Cuatro días de cierre con la ciudad reabierta y la subasta de atún del 5.</div></div></div>
+
+  <div class="balance">
+    <div class="bcol gana">
+      <h3>Qué gana</h3>
+      <ul><li><span>Cuatro mudanzas contra siete: se recuperan casi dos días completos que las otras dos gastan en estaciones.</span></li><li><span>Ocho días seguidos en Tokio y nueve en Kioto: es la única opción donde se puede volver a un lugar que gustó.</span></li><li><span>Deshacer la valija dos veces en 25 días. Con el día de nueve horas del invierno, eso pesa más de lo que parece.</span></li></ul>
+    </div>
+    <div class="bcol pierde">
+      <h3>Qué pierde</h3>
+      <ul><li><span>Kanazawa entera, y con ella el kōbako-gani y el yukitsuri de Kenroku-en. Es el precio de esta opción y es caro.</span></li><li><span>Osaka baja a excursión de un día, que según la investigación es su peor versión: obliga a volver justo cuando la ciudad se prende.</span></li><li><span>Es la opción menos ambiciosa en mapa. Si el criterio es ver Japón, pierde; si es disfrutarlo, quizás no.</span></li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="sec-head">
+    <span class="eyebrow">Lo que las tres respetan</span>
+    <p style="color:var(--ink-2)">No son preferencias mías: son cosas que existen un día y no existen al siguiente. El generador de esta página verifica las cinco en cada opción antes de publicarla.</p>
+  </div>
+  <ul class="lista"><li><span><strong>Kanazawa antes del 29 de diciembre.</strong> La kōbako-gani tiene veda ese día y es el plato que hace único al invierno de Kanazawa.</span></li><li><span><strong>Hakone ni el 2 ni el 3 de enero.</strong> El Hakone Ekiden corta la ruta los dos días.</span></li><li><span><strong>Osaka fuera del 31/12 al 4/1.</strong> Es una ciudad de comercio y calle, y eso es justo lo que shōgatsu apaga.</span></li><li><span><strong>El tren panorámico de Sagano, antes del 29 de diciembre.</strong> Después cierra hasta la primavera.</span></li><li><span><strong>Empezar y terminar en Tokio</strong>, que es donde están los vuelos — y de paso es la ciudad que mejor funciona en los dos extremos de la ventana.</span></li></ul>
+</section>
+
+<section class="cierre">
+  <div class="sec-head">
+    <span class="eyebrow">Lo que falta para decidir</span>
+  </div>
+  <ul class="lista"><li><span><strong>Marcar los intereses.</strong> Los 333 lugares del catálogo siguen todos en «quizás»: nadie opinó sobre ninguno. Eso es lo que decide si Kanazawa vale sus tres días o si Osaka pide cuatro.</span></li><li><span><strong>Reservar el ryokan, sobre todo si es la opción B.</strong> Las reservas de esas fechas abrieron en junio y es lo más urgente de todo el viaje.</span></li><li><span><strong>Decidir la noche del 31.</strong> En la opción A hay que elegir entre Okera-mairi en Kioto y el Todaiji de Nara abierto de madrugada: son la misma noche y no se pueden hacer las dos.</span></li></ul>
+  <a class="cta" href="epoca.html">Ver la investigación de la época →</a>
+</section>
+
+<footer>
+  <p>Armadas sobre la investigación de la época — 12 frentes, 137 hechos con fecha. El detalle de por qué cada cosa cae donde cae está en la página de la época.</p>
+</footer>
+</div>
+
+</body>
+</html>
