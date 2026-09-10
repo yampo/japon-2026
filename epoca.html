@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<style>
+html{color-scheme:light dark}
+body{margin:0;font:14px system-ui,sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Japón en shōgatsu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<style>
+:root{
+  --paper:#F2F4F7; --surface:#FFFFFF; --sunken:#E7EAF0;
+  --ink:#141922; --ink-2:#414A59; --ink-3:#6C7587;
+  --rule:#D4D9E2; --rule-soft:#E3E6ED;
+  --indigo:#2B4A7D; --indigo-soft:#E4EAF3;
+  --ocre:#8F5D12; --ocre-soft:#F3EADA;
+  --laca:#94302A; --laca-soft:#F5E2E0;
+  --violeta:#4A3A5C; --violeta-soft:#EAE6EF;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#111419; --surface:#191D25; --sunken:#0C0F13;
+    --ink:#ECEFF4; --ink-2:#B3BBC9; --ink-3:#828B9C;
+    --rule:#2B313B; --rule-soft:#222831;
+    --indigo:#93B0DD; --indigo-soft:#1C2634;
+    --ocre:#D6A257; --ocre-soft:#2A2318;
+    --laca:#E08C84; --laca-soft:#2E1D1B;
+    --violeta:#B9A7CE; --violeta-soft:#241E2C;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111419; --surface:#191D25; --sunken:#0C0F13;
+  --ink:#ECEFF4; --ink-2:#B3BBC9; --ink-3:#828B9C;
+  --rule:#2B313B; --rule-soft:#222831;
+  --indigo:#93B0DD; --indigo-soft:#1C2634;
+  --ocre:#D6A257; --ocre-soft:#2A2318;
+  --laca:#E08C84; --laca-soft:#2E1D1B;
+  --violeta:#B9A7CE; --violeta-soft:#241E2C;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:16.5px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:44rem; margin:0 auto; padding-inline:22px; padding-block:0 72px}
+
+h1,h2,h3{font-family:var(--serif); font-weight:600; text-wrap:balance; margin:0}
+h1{font-size:clamp(2.1rem,7vw,3.1rem); line-height:1.08; letter-spacing:-.015em}
+h2{font-size:clamp(1.4rem,4.2vw,1.85rem); line-height:1.2; letter-spacing:-.01em}
+h3{font-size:1.09rem; line-height:1.35}
+p{margin:0}
+strong{font-weight:600; color:var(--ink)}
+em{font-style:italic}
+a{color:var(--indigo)}
+:focus-visible{outline:2px solid var(--indigo); outline-offset:3px; border-radius:2px}
+
+.eyebrow{
+  font-family:var(--mono); font-size:.7rem; font-weight:500;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3);
+}
+
+/* ── portada ───────────────────────────────────────────────── */
+header{padding-block:clamp(46px,9vw,86px) clamp(30px,5vw,46px); display:flex; flex-direction:column; gap:20px}
+.kicker{display:flex; flex-wrap:wrap; gap:8px 16px; align-items:baseline}
+.ventana{
+  font-family:var(--mono); font-size:.95rem; color:var(--ink-2);
+  font-variant-numeric:tabular-nums;
+}
+.bajada{font-size:1.12rem; color:var(--ink-2); max-width:34rem}
+.meta{
+  display:flex; flex-wrap:wrap; gap:6px 22px; padding-top:6px;
+  border-top:1px solid var(--rule); font-size:.82rem; color:var(--ink-3);
+}
+.meta span{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* ── secciones ─────────────────────────────────────────────── */
+section{padding-block:clamp(30px,5.5vw,48px); border-top:1px solid var(--rule)}
+.sec-head{display:flex; flex-direction:column; gap:9px; margin-bottom:22px}
+.flow{display:flex; flex-direction:column; gap:16px}
+
+/* ── la ventana partida en tres ────────────────────────────── */
+.barra{display:flex; gap:3px; margin-block:4px 14px}
+.seg{
+  padding:11px 12px 13px; border-radius:3px; color:#fff;
+  display:flex; flex-direction:column; gap:2px; min-width:0;
+}
+.seg .dias{font-family:var(--mono); font-size:.72rem; opacity:.82; letter-spacing:.04em}
+.seg .rot{font-family:var(--serif); font-size:.98rem; font-weight:600; line-height:1.15}
+.seg.a{flex:15; background:var(--tramo-a,#2B4A7D)}
+.seg.b{flex:6; background:var(--tramo-b,#453456)}
+.seg.c{flex:4; background:var(--tramo-c,#8F5D12)}
+:root{--tramo-a:#2B4A7D; --tramo-b:#453456; --tramo-c:#8F5D12}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--tramo-a:#31538B; --tramo-b:#4C3B60; --tramo-c:#8A5A16}}
+:root[data-theme="dark"]{--tramo-a:#31538B; --tramo-b:#4C3B60; --tramo-c:#8A5A16}
+
+.tramos{display:flex; flex-direction:column; gap:0}
+.tramo{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; padding-block:15px; border-top:1px solid var(--rule-soft)}
+.tramo:first-child{border-top:0}
+.tramo .pip{width:9px; height:9px; border-radius:50%; margin-top:8px}
+.tramo.a .pip{background:var(--tramo-a)} .tramo.b .pip{background:var(--tramo-b)} .tramo.c .pip{background:var(--tramo-c)}
+.tramo .cuando{font-family:var(--mono); font-size:.82rem; color:var(--ink-3); font-variant-numeric:tabular-nums; letter-spacing:.02em}
+.tramo .qué{color:var(--ink-2); font-size:.97rem}
+.tramo h3{margin-bottom:1px}
+
+.destacado{
+  background:var(--indigo-soft); border-left:3px solid var(--indigo);
+  padding:16px 18px; font-size:1.02rem; color:var(--ink-2);
+}
+.destacado strong{color:var(--ink)}
+
+/* ── fechas que mandan ─────────────────────────────────────── */
+ol.fechas{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
+ol.fechas > li{
+  display:grid; grid-template-columns:2.6rem 1fr; gap:2px 14px;
+  padding-block:18px; border-top:1px solid var(--rule-soft);
+}
+ol.fechas > li:first-child{border-top:0}
+.num{
+  font-family:var(--mono); font-size:.78rem; color:var(--ink-3);
+  padding-top:5px; font-variant-numeric:tabular-nums;
+}
+.fecha-cuerpo{display:flex; flex-direction:column; gap:7px; min-width:0}
+.fecha-cuerpo p{color:var(--ink-2); font-size:.97rem}
+.regla{
+  font-family:var(--mono); font-size:.8rem; letter-spacing:.02em;
+  color:var(--laca); font-weight:500;
+}
+
+/* ── ciudades ──────────────────────────────────────────────── */
+.ciudades{display:flex; flex-direction:column}
+.ciudad{padding-block:20px; border-top:1px solid var(--rule-soft); display:flex; flex-direction:column; gap:9px}
+.ciudad:first-child{border-top:0}
+.ciudad-top{display:flex; flex-wrap:wrap; align-items:baseline; gap:5px 12px}
+.ciudad-top h3{font-size:1.22rem}
+.sol{
+  font-family:var(--mono); font-size:.74rem; color:var(--ink-3);
+  font-variant-numeric:tabular-nums; letter-spacing:.03em; margin-left:auto;
+}
+.veredicto{font-size:1rem; color:var(--ink)}
+.par{display:grid; grid-template-columns:5.1rem 1fr; gap:5px 12px; font-size:.93rem}
+.par dt{font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); padding-top:4px}
+.par dd{margin:0; color:var(--ink-2)}
+.par dd.costo{color:var(--ink-2)}
+.dias-min{font-family:var(--mono); font-size:.78rem; color:var(--indigo); font-variant-numeric:tabular-nums}
+
+/* ── la cuenta ─────────────────────────────────────────────── */
+.cuenta{
+  background:var(--surface); border:1px solid var(--rule);
+  padding:20px 20px 22px; display:flex; flex-direction:column; gap:16px;
+}
+.cuenta-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(8.2rem,1fr));
+  gap:1px; background:var(--rule-soft);
+}
+.cuenta-grid > div{background:var(--surface); padding:11px 12px; display:flex; justify-content:space-between; align-items:baseline; gap:10px}
+.cuenta-grid .c{font-size:.93rem; color:var(--ink-2)}
+.cuenta-grid .d{font-family:var(--mono); font-size:.93rem; font-variant-numeric:tabular-nums; color:var(--ink)}
+.suma{display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 14px; padding-top:2px; border-top:2px solid var(--ink); margin-top:-1px}
+.suma .n{font-family:var(--serif); font-size:1.9rem; font-weight:600; line-height:1.1; font-variant-numeric:tabular-nums}
+.suma .t{font-size:.95rem; color:var(--ink-2)}
+
+/* ── acción / tabla de urgencia ────────────────────────────── */
+.acciones{display:flex; flex-direction:column}
+.accion{
+  display:grid; grid-template-columns:minmax(0,10rem) 1fr; gap:4px 18px;
+  padding-block:16px; border-top:1px solid var(--rule-soft);
+}
+.accion:first-child{border-top:0}
+.accion .w{
+  font-family:var(--mono); font-size:.8rem; font-variant-numeric:tabular-nums;
+  color:var(--ink); letter-spacing:.01em; padding-top:2px;
+}
+.accion .w small{display:block; font-size:.72rem; color:var(--ink-3); letter-spacing:.03em; text-transform:uppercase; margin-top:3px}
+.accion .q{color:var(--ink-2); font-size:.96rem; min-width:0}
+.accion.urge .w{color:var(--laca)}
+.chip{
+  display:inline-block; font-family:var(--mono); font-size:.68rem;
+  letter-spacing:.09em; text-transform:uppercase; padding:2px 7px;
+  background:var(--laca-soft); color:var(--laca); border-radius:2px;
+  margin-right:7px; vertical-align:1px;
+}
+
+/* ── avisos ────────────────────────────────────────────────── */
+.aviso{
+  background:var(--ocre-soft); border-left:3px solid var(--ocre);
+  padding:16px 18px; display:flex; flex-direction:column; gap:11px;
+  font-size:.98rem; color:var(--ink-2);
+}
+.aviso strong{color:var(--ink)}
+.muerto{
+  background:var(--laca-soft); border-left:3px solid var(--laca);
+  padding:16px 18px; font-size:.98rem; color:var(--ink-2);
+}
+.muerto strong{color:var(--ink)}
+
+ul.lista{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px}
+ul.lista li{display:grid; grid-template-columns:auto 1fr; gap:11px; color:var(--ink-2); font-size:.97rem}
+ul.lista li::before{content:"—"; color:var(--ink-3); font-family:var(--mono); font-size:.85rem; padding-top:1px}
+
+footer{
+  padding-block:34px 0; border-top:1px solid var(--rule);
+  font-size:.83rem; color:var(--ink-3); display:flex; flex-direction:column; gap:7px;
+}
+footer code{font-family:var(--mono); font-size:.9em; color:var(--ink-2)}
+
+@media (max-width:560px){
+  body{font-size:16px}
+  .barra{flex-direction:column; gap:4px}
+  .seg{flex:none !important; flex-direction:row; align-items:baseline; gap:10px; padding:10px 12px}
+  .seg .rot{font-size:.95rem}
+  .seg .dias{margin-left:auto}
+  .par{grid-template-columns:1fr; gap:2px}
+  .par dt{padding-top:7px}
+  .accion{grid-template-columns:1fr; gap:6px}
+  .sol{margin-left:0; width:100%}
+  ol.fechas > li{grid-template-columns:1.9rem 1fr; gap:2px 10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+
+.idiomas{display:flex;gap:0;font-family:var(--mono);font-size:.73rem;letter-spacing:.06em;
+  text-transform:uppercase;border:1px solid var(--rule);border-radius:3px;overflow:hidden;width:max-content}
+.idiomas a,.idiomas span{padding:5px 11px;text-decoration:none;color:var(--ink-3);background:var(--surface)}
+.idiomas span{background:var(--indigo);color:#fff;font-weight:500}
+.idiomas a:hover{color:var(--ink);background:var(--sunken)}
+:root{--sunken:#E7EAF0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sunken:#0C0F13}}
+:root[data-theme="dark"]{--sunken:#0C0F13}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="idiomas"><span>Español</span><a href="epoca-pt.html">Português</a></div>
+  <div class="kicker">
+    <span class="eyebrow">Investigación de la época</span>
+    <span class="ventana">14 dic 2026 – 7 ene 2027 · 25 días</span>
+  </div>
+  <h1>Japón en shōgatsu</h1>
+  <p class="bajada">El año nuevo japonés no cae al principio del viaje ni al final. Cae justo en el medio, y eso parte la ventana en tres viajes que se comportan distinto.</p>
+  <div class="meta">
+    <span>12 frentes investigados</span>
+    <span>137 hechos con fecha</span>
+    <span>28 errores graves corregidos</span>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">La tesis</span>
+    <h2>El viaje son tres viajes</h2>
+  </div>
+  <div class="flow">
+    <div class="barra">
+      <div class="seg a"><span class="rot">Japón abierto</span><span class="dias">15 días</span></div>
+      <div class="seg b"><span class="rot">Shōgatsu</span><span class="dias">6 días</span></div>
+      <div class="seg c"><span class="rot">Reabre</span><span class="dias">4 días</span></div>
+    </div>
+
+    <div class="tramos">
+      <div class="tramo a">
+        <div class="pip"></div><div class="cuando">14 – 28 dic</div>
+        <div></div>
+        <div>
+          <h3>Japón funcionando a pleno</h3>
+          <p class="qué">Iluminaciones, mercados de fin de año, todos los restaurantes abiertos. Es más de la mitad del viaje: acá va todo lo que necesita que el país esté abierto.</p>
+        </div>
+      </div>
+      <div class="tramo b">
+        <div class="pip"></div><div class="cuando">29 dic – 3 ene</div>
+        <div></div>
+        <div>
+          <h3>Otro país</h3>
+          <p class="qué">Museos, comercios y restaurantes independientes cerrados; trenes desbordados. Pero los templos, al revés, son el epicentro del año.</p>
+        </div>
+      </div>
+      <div class="tramo c">
+        <div class="pip"></div><div class="cuando">4 – 7 ene</div>
+        <div></div>
+        <div>
+          <h3>Reabre todo</h3>
+          <p class="qué">El 5 de enero vuelve el mercado de pescado. Ojo: el 4 es lunes, o sea cierre semanal de museos. El día en que «reabre todo» sigue siendo malo para museos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="destacado">
+      <strong>El error a no cometer es tratar el tramo del medio como «Japón con algunas cosas cerradas».</strong> No lo es. O se dedica a lo que en shōgatsu es <em>mejor</em> que en cualquier otro momento del año —joya no kane, hatsumōde, Okera-mairi, el Todaiji abierto de madrugada, el Ekiden— o se sale de la ciudad. Lo que no funciona es intentar hacer turismo normal esos seis días.
+    </div>
+
+    <p>Un detalle de calendario que ayuda: el <strong>1 de enero cae viernes</strong>. No hay feriado puente, el país vuelve el lunes 4, y la parálisis se comprime en el 1, 2 y 3.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">Restricciones duras</span>
+    <h2>Las cuatro fechas que mandan sobre el orden</h2>
+    <p style="color:var(--ink-2)">No son preferencias. Son cosas que existen un día y no existen al siguiente.</p>
+  </div>
+
+  <ol class="fechas">
+    <li>
+      <div class="num">01</div>
+      <div class="fecha-cuerpo">
+        <h3>Kanazawa, antes del 29 de diciembre</h3>
+        <p>La kōbako-gani —la hembra del zuwai, con las huevas, que casi no sale de la prefectura— tiene veda el 29/12. Es el plato que hace único al invierno de Kanazawa y dura menos de dos meses al año. Después del 29 ese plato no existe, y encima Ōmichō está medio cerrado.</p>
+        <p class="regla">Ventana ideal: 15 al 27 de diciembre</p>
+      </div>
+    </li>
+    <li>
+      <div class="num">02</div>
+      <div class="fecha-cuerpo">
+        <h3>Nara, el 17 de diciembre o la noche del 31</h3>
+        <p>El Kasuga Wakamiya On-Matsuri va del 15 al 18 de diciembre, con el día grande el 17: festival de corte Heian, austero, casi sin turismo internacional. Y la madrugada del 1 de enero el Daibutsuden del Todaiji abre gratis de 00:00 a 08:00, con la ventana del rostro abierta.</p>
+        <p class="regla">Nunca el 2 ni el 3 de enero — es el peor día del año para Nara</p>
+      </div>
+    </li>
+    <li>
+      <div class="num">03</div>
+      <div class="fecha-cuerpo">
+        <h3>Osaka, en la primera mitad</h3>
+        <p>Midosuji iluminada hasta el 31/12 y Hikari no Renaissance en Nakanoshima solo del 11 al 25/12. Kuromon a pleno, castillo abierto. Del 31/12 al 4/1 Osaka está en su peor versión del año: es una ciudad cuyo producto es el comercio y la calle, y eso es justo lo que shōgatsu apaga.</p>
+      </div>
+    </li>
+    <li>
+      <div class="num">04</div>
+      <div class="fecha-cuerpo">
+        <h3>Hakone, no el 2 ni el 3 de enero</h3>
+        <p>El Hakone Ekiden corta la ruta los dos días. Sumado a que el 1 al 3 de enero es el pico de multitud del año, Hakone en ese tramo es la peor combinación posible.</p>
+      </div>
+    </li>
+  </ol>
+
+  <p style="margin-top:20px; color:var(--ink-2)">Y una que ya sabíamos y sigue en pie: el <strong>tren panorámico de Sagano</strong> opera del 14 al 29 de diciembre —salvo el miércoles 16— y después cierra hasta primavera.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">El tramo difícil</span>
+    <h2>Dónde conviene estar del 29/12 al 3/1</h2>
+    <p style="color:var(--ink-2)">Los seis días difíciles piden una ciudad cuyo producto <em>no</em> sea el comercio. Quedan dos candidatos, y son opuestos.</p>
+  </div>
+
+  <div class="ciudades">
+    <div class="ciudad">
+      <div class="ciudad-top"><h3>Kioto</h3><span class="sol">templos abiertos · reservas peleadas</span></div>
+      <p class="veredicto">Los templos no cierran: se llenan.</p>
+      <p style="color:var(--ink-2); font-size:.97rem">Okera-mairi la noche del 31, joya no kane, y el hatsumōde de Higashiyama. Es la mejor secuencia de tres días de tradición viva que ofrece Japón, y solo existe entre el 31 de diciembre y el 3 de enero. El costo es pelear cada reserva de restaurante. También es la mejor base para la noche del 31: Osaka no tiene nada parecido a Okera-mairi.</p>
+    </div>
+    <div class="ciudad">
+      <div class="ciudad-top"><h3>Un ryokan con kaiseki</h3><span class="sol">Hakone o la zona del Fuji</span></div>
+      <p class="veredicto">Resuelve el problema gastronómico por definición: se come adentro.</p>
+      <p style="color:var(--ink-2); font-size:.97rem">El contra es que Hakone está cortada el 2 y el 3 por el Ekiden. Y que las reservas se abrieron hace meses.</p>
+    </div>
+  </div>
+
+  <div class="muerto" style="margin-top:20px">
+    <strong>Lo que no conviene esos días:</strong> Tokio haciendo «Tokio normal», Osaka, y Nara.
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">Siete ciudades</span>
+    <h2>El invierno como argumento</h2>
+    <p style="color:var(--ink-2)">Ordenadas por cuánto <em>gana</em> la ciudad en esta época contra el resto del año. La hora es la puesta del sol el 14 de diciembre: eso es lo que define el día útil.</p>
+  </div>
+
+  <div class="ciudades">
+
+    <div class="ciudad">
+      <div class="ciudad-top"><h3>Fuji / Kawaguchiko</h3><span class="sol">se hace de noche 16:34</span></div>
+      <p class="veredicto">Su mejor época del año, sin empate.</p>
+      <dl class="par">
+        <dt>A favor</dt><dd>Diciembre es el mes más seco (49,8 mm) y enero el de más sol (212 h): es cuando el Fuji efectivamente se ve, con el cono nevado hasta abajo. En verano el visitante promedio no lo ve.</dd>
+        <dt>El costo</dt><dd class="costo">Frío de verdad al amanecer, día de nueve horas, y la gastronomía del pueblo apagada en shōgatsu.</dd>
+      </dl>
+      <p class="dias-min">1 noche mínimo — y la noche es el punto: el atardecer y el amanecer siguiente son los dos momentos en que el Fuji está limpio</p>
+    </div>
+
+    <div class="ciudad">
+      <div class="ciudad-top"><h3>Hakone</h3><span class="sol">se hace de noche 16:34</span></div>
+      <p class="veredicto">El motivo para ponerla en invierno y no en otra época.</p>
+      <dl class="par">
+        <dt>A favor</dt><dd>Es cuando se ve el Fuji, y Hakone entera está diseñada alrededor de esa vista. Mes más seco del año: 108 mm contra 449 en septiembre. El rotenburo a 3 °C es el producto, no un cliché.</dd>
+        <dt>El costo</dt><dd class="costo">El ropeway cierra 16:15 y cancela por viento. Y no es un destino foodie en ningún mes: pedile vista y onsen, no comida.</dd>
+      </dl>
+      <p class="dias-min">2 días / 1 noche mínimo · 3 días cómodo</p>
+    </div>
+
+    <div class="ciudad">
+      <div class="ciudad-top"><h3>Osaka</h3><span class="sol">se hace de noche 16:49</span></div>
+      <p class="veredicto">La que menos pierde.</p>
+      <dl class="par">
+        <dt>A favor</dt><dd>Su producto es comida y calle nocturna: idéntico en enero que en abril. Y el invierno es <em>su</em> temporada — Osaka es la ciudad que más fugu come de Japón, con pico de diciembre a febrero. Kuromon la última semana de diciembre es su versión más espectacular del año.</dd>
+        <dt>El costo</dt><dd class="costo">Solo shōgatsu. Nada más.</dd>
+      </dl>
+      <p class="dias-min">2 días mínimo · 3 cómodo para foodies — y se duerme, no se visita de paso</p>
+    </div>
+
+    <div class="ciudad">
+      <div class="ciudad-top"><h3>Nara</h3><span class="sol">se hace de noche 16:48</span></div>
+      <p class="veredicto">Mejora en invierno.</p>
+      <dl class="par">
+        <dt>A favor</dt><dd>55 mm al mes, el mínimo anual, y el plan de Nara es caminar. Ciervos sobre pasto seco dorado, luz rasante sobre los faroles de piedra de Kasuga. Y una ciudad que se hace en nueve horas entra entera en un día de nueve horas: Kioto no.</dd>
+        <dt>El costo</dt><dd class="costo">Wakakusa cerrado todo el viaje: su temporada terminó el 13 de diciembre y llegan el 14.</dd>
+      </dl>
+      <p class="dias-min">1 día — excursión desde Kioto, 35 min en Kintetsu</p>
+    </div>
+
+    <div class="ciudad">
+      <div class="ciudad-top"><h3>Tokio</h3><span class="sol">se hace de noche 16:30</span></div>
+      <p class="veredicto">Mejor momento del año para ver el Fuji desde la ciudad.</p>
+      <dl class="par">
+        <dt>A favor</dt><dd>Humedad del 51-56 %, la más baja del año, y el viento del norte limpia el aire. Época más seca y soleada. Comida de estación: fugu, ankō nabe, kani, ostras, oden en la calle, sake nuevo. Y las iluminaciones.</dd>
+        <dt>El costo</dt><dd class="costo">Anochece 16:30. Y shōgatsu le pega justo donde duele: la mitad de lo que un foodie quiere comer, cerrado, y no se arregla con plata ni con reserva.</dd>
+      </dl>
+      <p class="dias-min">5 días piso · 7-8 cómodo — al principio (14-28/12) y al final (4-7/1)</p>
+    </div>
+
+    <div class="ciudad">
+      <div class="ciudad-top"><h3>Kioto</h3><span class="sol">se hace de noche 16:46</span></div>
+      <p class="veredicto">La única época en que Kioto no está lleno.</p>
+      <dl class="par">
+        <dt>A favor</dt><dd>El mismo Kiyomizu que en noviembre es una fila humana, en diciembre se camina. Los jardines secos se leen mejor sin follaje. Cangrejo matsuba, fugu, yudofu, sake nuevo.</dd>
+        <dt>El costo</dt><dd class="costo">Oscurece 16:46 y los templos cierran 16:00: el día arranca 7:30, no 10:00. Y no tiene iluminación grande.</dd>
+      </dl>
+      <p class="dias-min">4 días mínimo · 5-6 cómodo — y es la base, no Osaka</p>
+    </div>
+
+    <div class="ciudad">
+      <div class="ciudad-top"><h3>Kanazawa</h3><span class="sol">se hace de noche 16:39</span></div>
+      <p class="veredicto">Vale por la mesa, no por la vista.</p>
+      <dl class="par">
+        <dt>A favor</dt><dd>El kōbako-gani, y el yukitsuri de Kenroku-en, que es un objeto de invierno: en cualquier otra época no está. Temporada baja — Kenroku-en un martes de diciembre a las 8:00 es de ustedes solos.</dd>
+        <dt>El costo</dt><dd class="costo">69 horas de sol en todo diciembre y 301 mm de lluvia: es la capital de prefectura más lluviosa de Japón. Y la iluminación del jardín es de febrero, no de diciembre.</dd>
+      </dl>
+      <p class="dias-min">2 noches / 2 días completos</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">La cuenta</span>
+    <h2>Entra todo, y sobra</h2>
+  </div>
+
+  <div class="cuenta">
+    <div class="cuenta-grid">
+      <div><span class="c">Tokio</span><span class="d">5</span></div>
+      <div><span class="c">Kioto</span><span class="d">4</span></div>
+      <div><span class="c">Osaka</span><span class="d">2</span></div>
+      <div><span class="c">Kanazawa</span><span class="d">2</span></div>
+      <div><span class="c">Hakone</span><span class="d">2</span></div>
+      <div><span class="c">Fuji</span><span class="d">2</span></div>
+      <div><span class="c">Nara</span><span class="d">1</span></div>
+    </div>
+    <div class="suma">
+      <span class="n">18</span>
+      <span class="t">días de piso contra <strong>25 disponibles</strong>. Seis o siete mudanzas se comen 3 o 3,5 días más.</span>
+    </div>
+  </div>
+
+  <div class="destacado" style="margin-top:20px">
+    <strong>La restricción del viaje no es el tiempo — es el orden.</strong> Entra todo con margen real, así que la discusión no es qué sacar, es en qué secuencia ponerlo.
+  </div>
+
+  <ul class="lista" style="margin-top:22px">
+    <li><span><strong>Kioto es la base, no Osaka.</strong> Nara (35 min), Uji, Osaka (30 min) y Himeji (1 h) salen de Kioto sin cambiar de hotel. Osaka, en cambio, se duerme: hacerla de día obliga a volver justo cuando la ciudad se prende.</span></li>
+    <li><span><strong>Kawaguchiko hay que dormirla.</strong> Lo que justifica la noche es tener el atardecer (16:34) y el amanecer siguiente (06:50). Un día de ida y vuelta cae exactamente en el peor horario.</span></li>
+  </ul>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">No espera al itinerario</span>
+    <h2>Lo que hay que hacer ahora</h2>
+  </div>
+
+  <div class="acciones">
+    <div class="accion urge">
+      <div class="w">ya se abrió<small>fines de junio</small></div>
+      <div class="q"><span class="chip">Urgente</span><strong>Los ryokan abren reservas 6 meses antes.</strong> La ventana para el 29/12 al 3/1 ya está abierta. Es lo más urgente del viaje y no depende de que se cierre el itinerario.</div>
+    </div>
+    <div class="accion urge">
+      <div class="w">7 – 11 oct 2026</div>
+      <div class="q"><strong>Sorteo del tour de Yamazaki.</strong> Si esa semana pasa de largo, en el viaje no hay tour.</div>
+    </div>
+    <div class="accion">
+      <div class="w">1 dic 2026<small>14:00 JST</small></div>
+      <div class="q"><strong>Abre la reserva del joya no kane de Chion-in.</strong> Es paga (¥3.000), solo se mira, y si no se reserva ese día no se entra. El ensayo del 27/12 a las 14:00 es gratis, sin reserva, y se ve lo mismo.</div>
+    </div>
+    <div class="accion">
+      <div class="w">1 mes antes<small>10:00 JST, exacto</small></div>
+      <div class="q"><strong>Salen a la venta los asientos reservados de JR.</strong> Para viajar el 29 de diciembre hay que estar el 29 de noviembre a las 10:00.</div>
+    </div>
+    <div class="accion">
+      <div class="w">19 – 22 dic 2026</div>
+      <div class="q"><strong>Cierran los pedidos de osechi</strong> en los department stores. Para dos turistas, lo real es pedirlo al ryokan al reservar.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">Decisión cerrada</span>
+    <h2>El JR Pass no conviene</h2>
+  </div>
+  <div class="flow">
+    <p>Sube el 1 de octubre de 2026: el de 7 días pasa de ¥50.000 a ¥53.000. Contra eso, los tramos sueltos del recorrido candidato rondan <strong>¥38.500</strong>, el pase <strong>no cubre el Nozomi</strong>, y 7 días no cubren 25.</p>
+    <p style="color:var(--ink-2)">Esto cierra una de las decisiones que estaban abiertas sin esperar al itinerario.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="eyebrow">Lo que falta</span>
+    <h2>Hay que volver a mirar en noviembre</h2>
+  </div>
+
+  <div class="aviso">
+    <p><strong>Casi nada de la temporada 2026-2027 estaba publicado en septiembre.</strong> No es una falla de la investigación: en Japón se publica tarde. De los 137 hechos con fecha, <strong>47 están confirmados para esta edición y 76 son patrón</strong> de ediciones anteriores — sirven para planificar, no para comprometerse.</p>
+    <p>Las guías de iluminaciones publican a mediados de octubre. Los informes de tren de fin de año, a mediados de diciembre. El calendario del mercado central de Tokio para 2027 todavía no existe.</p>
+  </div>
+
+  <p style="margin-top:20px; color:var(--ink-2)">Una regla útil para leer cualquier fecha que aparezca: todo lo que se llama <strong>«Christmas» corta el 25/12</strong>; lo que se llama <strong>«Illumination» sigue hasta febrero</strong>.</p>
+
+  <div class="muerto" style="margin-top:20px">
+    <strong>Y dos que no existen, aunque medio internet las siga listando con fechas:</strong> el Arashiyama Hanatōrō no se hace desde 2021, y la Rohm Illumination de Kioto terminó definitivamente en 2022. Kioto en diciembre no tiene iluminación grande. Si aparecen anunciadas, es una página vieja.
+  </div>
+</section>
+
+<footer>
+  <p>Síntesis de 12 frentes investigados el 10 de septiembre de 2026 — 36 agentes, 2.937 líneas con fuente al pie, 28 afirmaciones graves corregidas por el auditor adversarial.</p>
+  <p>El detalle está en <code>trips/japon-2026/investigacion_epoca/</code>: un archivo por frente, más <code>CALENDARIO.md</code> con las fechas y <code>hechos_duros.json</code> con los 137 hechos.</p>
+</footer>
+
+</div>
+
+</body>
+</html>
