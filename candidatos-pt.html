@@ -137,6 +137,8 @@ footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--rule);
   display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 #exportar p{font-size:.78rem;color:var(--ink-3);flex:1;min-width:10rem}
 #exportar .btn{padding:9px 18px;font-size:.85rem;flex:none}
+.expbtns{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex:none}
+.expbtns a{font-size:.7rem;color:var(--ink-3)}
 body.conbarra{padding-bottom:78px}
 #toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:60;
   background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:7px;
@@ -5265,15 +5267,45 @@ body.conbarra{padding-bottom:78px}
 </div>
 <div id="exportar" hidden>
   <p id="modo"></p>
-  <button class="btn" id="copiar">Copiar minha seleção</button>
+  <div class="expbtns">
+    <button class="btn" id="copiar">Copiar meu link</button>
+    <a href="#" id="copiarTxt">ou copiar como texto</a>
+  </div>
 </div>
 <div id="toast"></div>
 
-<script>var TOTAL=298, TXT={"titulo": "Quais a gente inclui?", "eyebrow": "Candidatos para o catálogo", "bajada": "Lugares que <b>não</b> estão na lista do Google Maps, buscados para as cidades da viagem e arredores. Marque o que te interessar: o que ficar em «sim» ou «talvez» vai ser pesquisado a fundo e entra no planejador.", "quien": "Quem é você?", "quien_n": "Fica salvo separado para cada um, e você vai ver o que o outro marcou.", "cambiar": "trocar", "no": "Não", "quizas": "Talvez", "si": "Sim", "todos": "Tudo", "conocido": "Conhecido", "joya": "Joia escondida", "solo_sin": "Sem marcar", "tabelog": "Tabelog 3+", "buscar": "Buscar…", "nada": "Nada com esses filtros.", "guardado": "salvo", "local": "Fica salvo neste telefone e não se compartilha sozinho: quando terminar toque em «Copiar minha seleção» e mande para o Juan.", "nube": "Salva sozinho. Pode fechar e continuar depois.", "progreso": "marcados", "otro_dice": "o outro disse", "auditor": "O auditor corrigiu", "epoca": "Em dezembro-janeiro", "llegar": "Como chegar", "copiar": "Copiar minha seleção", "copiado": "Copiado! Manda pro Juan.", "pie": "298 candidatos, buscados por 15 agentes e auditados um a um: 5 foram descartados por estarem fechados ou duplicados. As fichas são curtas de propósito — a pesquisa a fundo é feita sobre o que vocês escolherem."};</script>
+<script>var TOTAL=298, TXT={"titulo": "Quais a gente inclui?", "eyebrow": "Candidatos para o catálogo", "bajada": "Lugares que <b>não</b> estão na lista do Google Maps, buscados para as cidades da viagem e arredores. Marque o que te interessar: o que ficar em «sim» ou «talvez» vai ser pesquisado a fundo e entra no planejador.", "quien": "Quem é você?", "quien_n": "Fica salvo separado para cada um, e você vai ver o que o outro marcou.", "cambiar": "trocar", "no": "Não", "quizas": "Talvez", "si": "Sim", "todos": "Tudo", "conocido": "Conhecido", "joya": "Joia escondida", "solo_sin": "Sem marcar", "tabelog": "Tabelog 3+", "buscar": "Buscar…", "nada": "Nada com esses filtros.", "guardado": "salvo", "local": "Fica salvo neste telefone. Quando terminar, copie seu link e mande: o outro abre e vê suas marcas.", "nube": "Salva sozinho. Pode fechar e continuar depois.", "progreso": "marcados", "otro_dice": "o outro disse", "auditor": "O auditor corrigiu", "epoca": "Em dezembro-janeiro", "llegar": "Como chegar", "copiar": "Copiar meu link", "copiar2": "ou copiar como texto", "copiado": "Link copiado! Manda pelo WhatsApp.", "copiado2": "Copiado como texto.", "recibido": "Marcas de {q} carregadas: {n} lugares. Já dá para ver o que escolheu ao lado de cada um.", "viejo": "Esse link é de uma versão anterior da lista e as marcas não batem com os lugares de hoje. Peça para copiar de novo.", "roto": "Não consegui ler esse link.", "pie": "298 candidatos, buscados por 15 agentes e auditados um a um: 5 foram descartados por estarem fechados ou duplicados. As fichas são curtas de propósito — a pesquisa a fundo é feita sobre o que vocês escolherem."}, ORDEN=["c_isegen", "c_komagatadozeuhonten", "c_asakusaodenotafuku", "c_tonkatsutonki", "c_onigiriasakusayadoroku", "c_cafedelambre", "c_chateihatou", "c_meikyokukissalion", "c_takemura", "c_shinsuke", "c_chankokawasaki", "c_kakigoyatsukijishokudo", "c_beerhalllionginzananachome", "c_sabouru", "c_nodaiwaazabuiikura", "c_monjakondohontentsukishimamo", "c_amiryogoku", "c_tokyonationalmuseum", "c_edotokyomuseum", "c_tokyometropolitangovernmentb", "c_mttakaodiamondfuji", "c_nezumuseum", "c_kyuasakurahouse", "c_nezushrine", "c_gotokujitemple", "c_koishikawakorakuen", "c_kagurazaka", "c_jimbocho", "c_hakoneekidenlargadaenotemach", "c_dezomeshikirevistadebomberos", "c_marunouchinakadoriilluminati", "c_tokyomidtownstarlightgarden", "c_ameyokoenfindeano", "c_tokyometropolitanteienartmus", "c_sumidahokusaimuseum", "c_tomiokahachimanguyfukagawafu", "c_honkeowariyahonten", "c_izuju", "c_okutannanzenji", "c_tousuirokiyamachi", "c_inodacoffeehonten", "c_rokuyoshachikaten", "c_smartcoffee", "c_ichimonjiyawasukeichiwa", "c_demachifutaba", "c_menyainoichi", "c_hinodeudon", "c_mishimateihonten", "c_kyogokukaneyo", "c_menami", "c_fushimisakagurakoji", "c_sakebaryoramu", "c_fiveran", "c_lepetitmecoike", "c_flipup", "c_matsubahontennishinsoba", "c_fuguryoriipponyari", "c_genpinfugukyotokarasuma", "c_ryoanji", "c_tofukujijardinesdelhojo", "c_nanzenjiyelacueductosuirokak", "c_konchiin", "c_daitokujidaiseninyzuihoin", "c_sanjusangendo", "c_tojiyelmercadoshimaikobo", "c_kitanotenmangumercadoshimait", "c_yasakajinjaokeramairidenoche", "c_shisendo", "c_enkoji", "c_honenin", "c_murinan", "c_shogunzukaseiryuden", "c_palacioimperialdekiotokyotog", "c_museonacionaldekioto", "c_casadekawaikanjiro", "c_ichizawashinzaburohanpu", "c_kaikadocafe", "c_tenryuji", "c_okochisanso", "c_hiiragiyaryokan", "c_nishijin", "c_futomasasennichimaehonten", "c_kamifukutei", "c_mantenhanarekyobashi", "c_yakifuguyufukukitashinchi", "c_genpinhozenjisohonten", "c_kitashinchikushikatsubon", "c_rokukakutei", "c_kushikatsudarumanambamainsho", "c_honkeotako", "c_okonomiyakiajikuraya", "c_okonomitamachanviva", "c_botejyuhonten", "c_harukomahonten", "c_endosushi", "c_yoshinosushi", "c_tenjinsushi", "c_nakanaka", "c_tenrokubonten", "c_kissamadura", "c_arabiyacoffee", "c_marufukucoffeesennichimaehon", "c_shitennoji", "c_isshinji", "c_osakacitycentralpublichall", "c_nakanoshimamuseumofart", "c_towerofthesunexpo70commemora", "c_nationalmuseumofethnologymin", "c_nambayasakajinja", "c_dendentownnipponbashi", "c_nakazakicho", "c_tsuruhashikoreatownmiyukimor", "c_karahorishotengaiykuromondor", "c_openairmuseumofoldjapanesefa", "c_zentisosaka", "c_omichomarket", "c_yamasansushihonten", "c_ikiikiteiomicho", "c_inoya", "c_otomesushi", "c_sushikibatani", "c_morimorisushiomicho", "c_odenkikuichi", "c_akadamahonten", "c_miyuki", "c_takasago", "c_kuroyuri", "c_tsubajin", "c_otomoro", "c_higashidecoffee", "c_nakatayahigashiyamachayagai", "c_turbancurryhonten", "c_dainanagyozanomise", "c_amanattokawamura", "c_kanazawacastlepark", "c_gyokuseninmarugardenlightupn", "c_higashichayadistrict", "c_kaikaro", "c_shimateahouse", "c_kazuemachichayadistrict", "c_nishichayadistrict", "c_nagamachisamuraidistrictynom", "c_21stcenturymuseumofcontempor", "c_dtsuzukimuseum", "c_seisonkakuvilla", "c_myoryujininjatemple", "c_teramachitempledistrict", "c_oyamashrine", "c_ishiurashrine", "c_ishikawaprefecturalmuseumofa", "c_kanazawayasuegoldleafmuseum", "c_goldleafsakuda", "c_hakuzahikarigura", "c_kanazawaphonographmuseum", "c_kanazawanohmuseum", "c_utatsuyamaparkobservatory", "c_kanazawastationtsuzumimonymo", "c_yuwakuonsenyedomura", "c_sumiyoshiyaryokan", "c_asadaya", "c_kasugataisha", "c_kofukujiysukokuhokan", "c_kasugawakamiyaonmatsuri", "c_yakushiji", "c_toshodaiji", "c_horyuji", "c_isuienymuseoneiraku", "c_shinyakushiji", "c_gangoji", "c_naramachi", "c_naramachinigiwainoie", "c_terrazamiradordelaprefectura", "c_bosqueprimigeniodekasugayama", "c_museonacionaldenara", "c_harushikasakebreweryshopiman", "c_nakagawamasashichishotennara", "c_kakinohazushihirasosucursaln", "c_awanaramachi", "c_kashiya", "c_chugokusainaramachikuko", "c_naranikon", "c_saikaramenhonten", "c_omiwajinja", "c_imaicho", "c_gorahanaougi", "c_yamanochaya", "c_kinnotaketonosawa", "c_hakoneginyu", "c_setsugetsuka", "c_owakudanikurotamagokan", "c_hatsuhanasobahonten", "c_takeyabuhakone", "c_amazakechaya", "c_narayacafe", "c_polamuseumofart", "c_okadamuseumofart", "c_narukawaartmuseum", "c_santuariohakoneyheiwanotorii", "c_kuzuryushrinehongu", "c_fujiyahotelmiyanoshita", "c_hakoneekiden103aedicion", "c_oishipark", "c_mttenjokachikachiropeway", "c_oshinohakkai", "c_kitaguchihongufujisengenshri", "c_tenkunotoriikawaguchiasamash", "c_nagaikeshinsuiparklakeyamana", "c_panoramadailookoutlakeyamana", "c_nakanokurapassviewpointlakem", "c_koyodailookout", "c_saikoiyashinosatonenba", "c_hotofudohigashikoiji", "c_miuraudon", "c_shirasuudon", "c_sanrokuen", "c_kozanteiubuya", "c_shuhokakukogetsu", "c_fujiviewhotel", "c_arayayamashrine", "c_tsurugaokahachimangu", "c_engakuji", "c_hokokuji", "c_zuisenji", "c_kamakuramatsubaraan", "c_kibiyabakerycasacentral", "c_enoshimaseacandleyshonannoho", "c_iwayacavesdeenoshima", "c_yokohamachinatownchukagai", "c_noge", "c_shinyokohamaramenmuseum", "c_kurazukuristreetytokinokane", "c_kashiyayokocho", "c_kitainylos540rakan", "c_nikkotoshogu", "c_kanmangafuchiabyss", "c_kegonfalls", "c_hodosanyeljardinderobai", "c_misotsuchinotsurara", "c_ujigamijinja", "c_nakamuratokichihontencasamat", "c_asahiyaki", "c_sanzenin", "c_hosenin", "c_jakkoin", "c_shibakyuencurtidosdeohara", "c_yoshuji", "c_museodelsakegekkeikanokura", "c_toriseihonten", "c_kizakurakappacountry", "c_teradaya", "c_enryakujimontehiei", "c_hiyoshitaisha", "c_kyuchikurinin", "c_honketsurukisoba", "c_ishiyamadera", "c_miideraonjoji", "c_otaginenbutsuji", "c_adashinonenbutsujiylacallesa", "c_gioji", "c_villaokochisanso", "c_mizuyachaya", "c_suganumagasshozukurivillage", "c_eiheiji", "c_natadera", "c_kakusenkeigorgekorogibridgey", "c_kosoyu", "c_rosanjinirohasoan", "c_hoshiryokan", "c_yunokuninomori", "c_shirayamahimejinja", "c_iwasehistoricdistrictmasudas", "c_zuiryujitakaokadaibutsu", "c_amaharashicoast", "c_himibanyagaihimikanburi", "c_nishichotaikihonten", "c_inamizuisenji", "c_shiroyonesenmaidaazenokirame", "c_wajimaasaichisedetemporariaw", "c_kitanoijinkangai", "c_freundliebhonten", "c_mouriyahonten", "c_nadagogoymuseodesakehakutsur", "c_nunobikiherbgardensycascadas", "c_arimaonsen", "c_kokoen", "c_engyojimonteshosha", "c_cafedemuche", "c_okunoin", "c_ekoinshukubo", "c_kadohamagomatofusohonpo", "c_izushiyelsarasobadechikaata", "c_genbudo", "c_nishimurayahonkan", "c_amanohashidateviewlandykasam", "c_inenofunaya", "c_isejingunaikuyoharaimachioka", "c_akafukuhonten", "c_meotoiwafutamiokitamajinja"], HUELLA="fdb246";</script>
 <script>
 (function(){
   var LS='candidatos_japon_v1', quien=null, votos={}, otros={}, db=null, doc=null;
   var T=TXT;
+
+  // ── la selección, empaquetada para que entre en un link ───────────────────
+  // Cada lugar ocupa 2 bits: 0 no · 1 quizás · 2 sí · 3 sin marcar. 298 lugares
+  // son 75 bytes, o sea ~100 caracteres en base64. Entra en un WhatsApp.
+  function empacar(v){
+    var bytes=new Uint8Array(Math.ceil(ORDEN.length/4));
+    for(var i=0;i<ORDEN.length;i++){
+      var x=v[ORDEN[i]]; if(x!==0&&x!==1&&x!==2) x=3;
+      bytes[i>>2] |= x << ((i&3)*2);
+    }
+    var s=''; for(var j=0;j<bytes.length;j++) s+=String.fromCharCode(bytes[j]);
+    return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  }
+  function desempacar(b64){
+    var s=atob(b64.replace(/-/g,'+').replace(/_/g,'/'));
+    var v={};
+    for(var i=0;i<ORDEN.length;i++){
+      var byte=s.charCodeAt(i>>2); if(isNaN(byte)) break;
+      var x=(byte >> ((i&3)*2)) & 3;
+      if(x!==3) v[ORDEN[i]]=x;
+    }
+    return v;
+  }
+  function miLink(){
+    var base=location.origin+location.pathname;
+    return base+'#s='+(quien==='jp'?'j':'t')+HUELLA+empacar(votos);
+  }
 
   function $(s,c){return (c||document).querySelector(s)}
   function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))}
@@ -5325,6 +5357,9 @@ body.conbarra{padding-bottom:78px}
     $('#modo').textContent=T.local;
     $('#exportar').hidden=false;
     document.body.classList.add('conbarra');
+    // Sin base de datos, «lo que marcó el otro» es lo último que llegó por link.
+    otros = leerLocal(LS+'_recibido_'+(quien==='jp'?'th':'jp')) || {};
+    pintarOtros();
   }
 
   var pend=null;
@@ -5417,18 +5452,46 @@ body.conbarra{padding-bottom:78px}
   });
   $('#q').addEventListener('input',function(){q=this.value.toLowerCase().trim();filtrar()});
   $('#cambiar').onclick=function(){ pedirQuien() };
-  $('#copiar').onclick=function(){
-    var t=JSON.stringify({quien:quien,votos:votos});
+  function alPortapapeles(t,ok){
     (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject())
-      .then(function(){toast(T.copiado)})
+      .then(function(){toast(ok)})
       .catch(function(){
-        var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);
-        a.select();try{document.execCommand('copy');toast(T.copiado)}catch(e){}
+        // Safari viejo y las páginas servidas sin https no tienen clipboard.
+        var a=document.createElement('textarea');a.value=t;
+        a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);
+        a.select();try{document.execCommand('copy');toast(ok)}catch(e){}
         document.body.removeChild(a);
       });
+  }
+  $('#copiar').onclick=function(){ alPortapapeles(miLink(),T.copiado) };
+  $('#copiarTxt').onclick=function(e){
+    e.preventDefault();
+    alPortapapeles(JSON.stringify({quien:quien,votos:votos}),T.copiado2);
   };
 
+  // Un link recibido: se cargan las marcas del OTRO, no las propias. Nunca
+  // pisan lo que uno marcó: se guardan aparte y se muestran al costado.
+  function leerLink(){
+    var m=(location.hash||'').match(/[#&]s=([jt])([0-9a-f]{6})([A-Za-z0-9_-]+)/);
+    if(!m) return null;
+    history.replaceState(null,'',location.pathname+location.search);
+    if(m[2]!==HUELLA){ toast(T.viejo); return null }
+    try{ return {quien: m[1]==='j'?'jp':'th', votos: desempacar(m[3])} }
+    catch(e){ toast(T.roto); return null }
+  }
+
+  var recibido=leerLink();
   var g=leerLocal(LS+'_quien');
+  if(recibido){
+    // Guardo lo que mandó el otro bajo SU nombre. Si el que abre resulta ser esa
+    // misma persona (se mandó el link a sí misma), se toma como su selección.
+    escribirLocal(LS+'_recibido_'+recibido.quien, recibido.votos);
+    var n=Object.keys(recibido.votos).length;
+    var nom=recibido.quien==='jp'?'Juan Pablo':'Thais';
+    setTimeout(function(){
+      toast(T.recibido.replace('{q}',nom).replace('{n}',n));
+    },700);
+  }
   if(g==='jp'||g==='th') setQuien(g); else pedirQuien();
 })();
 </script>
