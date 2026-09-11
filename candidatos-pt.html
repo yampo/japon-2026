@@ -132,6 +132,12 @@ input[type=search]{width:100%;font:inherit;font-size:.93rem;padding:9px 12px;
 .vacio{padding:40px 0;text-align:center;color:var(--ink-3)}
 footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--rule);
   font-size:.8rem;color:var(--ink-3);display:flex;flex-direction:column;gap:12px}
+#exportar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface);
+  border-top:1px solid var(--rule);padding:11px 16px calc(11px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#exportar p{font-size:.78rem;color:var(--ink-3);flex:1;min-width:10rem}
+#exportar .btn{padding:9px 18px;font-size:.85rem;flex:none}
+body.conbarra{padding-bottom:78px}
 #toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:60;
   background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:7px;
   font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;text-align:center}
@@ -5254,14 +5260,16 @@ footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--rule);
 <div class="vacio" id="vacio" hidden>Nada com esses filtros.</div>
 
 <footer>
-  <p id="modo"></p>
   <p>298 candidatos, buscados por 15 agentes e auditados um a um: 5 foram descartados por estarem fechados ou duplicados. As fichas são curtas de propósito — a pesquisa a fundo é feita sobre o que vocês escolherem.</p>
-  <button class="btn sec" id="copiar" style="align-self:flex-start">Copiar minha seleção</button>
 </footer>
+</div>
+<div id="exportar" hidden>
+  <p id="modo"></p>
+  <button class="btn" id="copiar">Copiar minha seleção</button>
 </div>
 <div id="toast"></div>
 
-<script>var TOTAL=298, TXT={"titulo": "Quais a gente inclui?", "eyebrow": "Candidatos para o catálogo", "bajada": "Lugares que <b>não</b> estão na lista do Google Maps, buscados para as cidades da viagem e arredores. Marque o que te interessar: o que ficar em «sim» ou «talvez» vai ser pesquisado a fundo e entra no planejador.", "quien": "Quem é você?", "quien_n": "Fica salvo separado para cada um, e você vai ver o que o outro marcou.", "cambiar": "trocar", "no": "Não", "quizas": "Talvez", "si": "Sim", "todos": "Tudo", "conocido": "Conhecido", "joya": "Joia escondida", "solo_sin": "Sem marcar", "tabelog": "Tabelog 3+", "buscar": "Buscar…", "nada": "Nada com esses filtros.", "guardado": "salvo", "local": "Fica salvo neste navegador. Avise o Juan quando terminar.", "nube": "Salva sozinho. Pode fechar e continuar depois.", "progreso": "marcados", "otro_dice": "o outro disse", "auditor": "O auditor corrigiu", "epoca": "Em dezembro-janeiro", "llegar": "Como chegar", "copiar": "Copiar minha seleção", "copiado": "Copiado! Manda pro Juan.", "pie": "298 candidatos, buscados por 15 agentes e auditados um a um: 5 foram descartados por estarem fechados ou duplicados. As fichas são curtas de propósito — a pesquisa a fundo é feita sobre o que vocês escolherem."};</script>
+<script>var TOTAL=298, TXT={"titulo": "Quais a gente inclui?", "eyebrow": "Candidatos para o catálogo", "bajada": "Lugares que <b>não</b> estão na lista do Google Maps, buscados para as cidades da viagem e arredores. Marque o que te interessar: o que ficar em «sim» ou «talvez» vai ser pesquisado a fundo e entra no planejador.", "quien": "Quem é você?", "quien_n": "Fica salvo separado para cada um, e você vai ver o que o outro marcou.", "cambiar": "trocar", "no": "Não", "quizas": "Talvez", "si": "Sim", "todos": "Tudo", "conocido": "Conhecido", "joya": "Joia escondida", "solo_sin": "Sem marcar", "tabelog": "Tabelog 3+", "buscar": "Buscar…", "nada": "Nada com esses filtros.", "guardado": "salvo", "local": "Fica salvo neste telefone e não se compartilha sozinho: quando terminar toque em «Copiar minha seleção» e mande para o Juan.", "nube": "Salva sozinho. Pode fechar e continuar depois.", "progreso": "marcados", "otro_dice": "o outro disse", "auditor": "O auditor corrigiu", "epoca": "Em dezembro-janeiro", "llegar": "Como chegar", "copiar": "Copiar minha seleção", "copiado": "Copiado! Manda pro Juan.", "pie": "298 candidatos, buscados por 15 agentes e auditados um a um: 5 foram descartados por estarem fechados ou duplicados. As fichas são curtas de propósito — a pesquisa a fundo é feita sobre o que vocês escolherem."};</script>
 <script>
 (function(){
   var LS='candidatos_japon_v1', quien=null, votos={}, otros={}, db=null, doc=null;
@@ -5293,9 +5301,9 @@ footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--rule);
   function arrancarAlmacen(){
     votos = leerLocal(LS+'_'+quien) || {};
     pintarTodo();
-    if(!(window.claude && window.claude.use)){ $('#modo').textContent=T.local; return }
+    if(!(window.claude && window.claude.use)){ modoLocal(); return }
     window.claude.use('db').then(function(d){
-      if(!d){ $('#modo').textContent=T.local; return }
+      if(!d){ modoLocal(); return }
       db=d; doc=db.doc('seleccion/'+quien);
       $('#modo').textContent=T.nube;
       doc.get().then(function(s){
@@ -5310,7 +5318,13 @@ footer{margin-top:40px;padding-top:22px;border-top:1px solid var(--rule);
       db.doc('seleccion/'+otroId).onSnapshot(function(s){
         otros=(s&&s.data&&s.data.votos)||{}; pintarOtros();
       });
-    }).catch(function(){ $('#modo').textContent=T.local });
+    }).catch(function(){ modoLocal() });
+  }
+
+  function modoLocal(){
+    $('#modo').textContent=T.local;
+    $('#exportar').hidden=false;
+    document.body.classList.add('conbarra');
   }
 
   var pend=null;
